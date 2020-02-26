@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 9버튼 컨트롤러를 구성할 GridLayout -->
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:columnCount="3">
+
+    <!-- 좌상 버튼 -->
+    <Button
+        android:id="@+id/gridcell_lefttop"
+        android:text="↖"
+        android:textSize="@dimen/cell_font_size"/>
+
+    <!-- 상 버튼 -->
+    <Button
+        android:id="@+id/gridcell_top"
+        android:text="↑"
+        android:textSize="@dimen/cell_font_size"/>
+
+    <!-- 우상 버튼 -->
+    <Button
+        android:id="@+id/gridcell_righttop"
+        android:text="↗"
+        android:textSize="@dimen/cell_font_size"/>
+
+    <!-- 좌 버튼 -->
+    <Button
+        android:id="@+id/gridcell_left"
+        android:text="←"
+        android:textSize="@dimen/cell_font_size"/>
+
+    <!-- 중간 버튼 (필요없으니 invisible로 설정) -->
+    <Button
+        android:id="@+id/gridcell_center"
+        android:visibility="invisible"/>
+
+    <!-- 우 버튼 -->
+    <Button
+        android:id="@+id/gridcell_right"
+        android:text="→"
+        android:textSize="@dimen/cell_font_size"/>
+
+    <!-- 좌하 버튼 -->
+    <Button
+        android:id="@+id/gridcell_leftbottom"
+        android:text="↙"
+        android:textSize="@dimen/cell_font_size"/>
+
+    <!-- 하 버튼 -->
+    <Button
+        android:id="@+id/gridcell_bottom"
+        android:text="↓"
+        android:textSize="@dimen/cell_font_size"/>
+
+    <!-- 우하 버튼 -->
+    <Button
+        android:id="@+id/gridcell_rightbottom"
+        android:text="↘"
+        android:textSize="@dimen/cell_font_size"/>
+
+</GridLayout>

@@ -78,19 +78,20 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * MovingBox의 위치를 바꾼다
+     * 스크린의 범위를 빠져나갈시 박스를 스크린 안으로 재위치한다
      * @param position 위치값
      */
     public void setBoxPosition(final PointF position) {
-        mMovingBox.position.x = position.x;
-        mMovingBox.position.y = position.y;
+        mMovingBox.position.x = Math.min(mScreen.rightBottom.x - mMovingBox.size.y,
+                Math.max(mScreen.leftTop.x, position.x));
+        mMovingBox.position.y = Math.min(mScreen.rightBottom.y - mMovingBox.size.y,
+                Math.max(mScreen.leftTop.y, position.y));
 
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mMovingBoxParams.leftMargin = (int)position.x;
-                mMovingBoxParams.topMargin = (int)position.y;
-
-                Log.d("main", mMovingBoxParams.leftMargin + " " + mMovingBoxParams.topMargin);
+                mMovingBoxParams.leftMargin = (int)mMovingBox.position.x;
+                mMovingBoxParams.topMargin = (int)mMovingBox.position.y;
 
                 mMovingBoxView.setLayoutParams(mMovingBoxParams);
             }
@@ -108,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mMovingBoxParams.width = (int) size.x;
-                mMovingBoxParams.height = (int) size.y;
+                mMovingBoxParams.width = (int) mMovingBox.size.x;
+                mMovingBoxParams.height = (int) mMovingBox.size.y;
 
                 mMovingBoxView.setLayoutParams(mMovingBoxParams);
             }
@@ -190,7 +191,6 @@ public class MainActivity extends AppCompatActivity {
                     mLastX = curX;
                     mLastY = curY;
 
-                    Log.d("move", mMovement.x + " " + mMovement.y);
                     offsetBox(mMovement);
                 }break;
 
